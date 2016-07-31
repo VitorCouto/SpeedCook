@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="index">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS - CORS</title>
+    <script src="angular.js"></script>
+    <script>
+      var url = 'http://localhost:8080/uf';
+
+      angular.module('index', [])
+        .controller('indexCtrl', function($scope, $http) {
+          $scope.ufs = {};
+
+          $scope.findUfs = function() {
+            $http.get(url).then(function(data) {
+              $scope.ufs = data.data;
+            });
+          };
+          
+          $scope.save = function(nome,sigla) {
+        	var request = {
+        		method: 'POST'	,
+        		url: url,
+        		headers: {
+        			'Content-Type':'application/json'
+        		},
+        		data:{ 
+        			'nome':nome,
+        			'sigla':sigla
+        		}
+        	};
+        	
+        	$http(request).
+	            then(function(data) {
+	           	 $scope.ufs.push(data.data);
+	            });
+          };
+        });
+    </script>
+  </head>
+  <body ng-controller="indexCtrl">
+    <label>Nome:</label> <input ng-model="nome"></input> <br>
+    <label>Sigla:</label> <input ng-model="sigla"></input> <br>
+    <button ng-click="save(nome, sigla)">Salvar</button><br>
+    <button ng-click="findUfs()">Buscar</button><br>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Nome</td>
+          <td>Sigla</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="uf in ufs">
+          <td>{{ uf.id }}</td>
+          <td>{{ uf.nome }}</td>
+          <td>{{ uf.sigla }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
