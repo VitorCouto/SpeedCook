@@ -38,6 +38,8 @@ public final class ServicePath {
 
 	public static final String PEDIDO_EMPRESA_PATH = PRIVATE_ROOT_PATH + "/pedido/byempresa";
 
+	public static final String PEDIDO_IDPEDIDO_PATH = PRIVATE_ROOT_PATH + "/pedido/bypedido?id=";
+
 	public static final String PRODUTO_PATH = PRIVATE_ROOT_PATH + "/produto";
 
 	public static final String STATUS_PATH = PRIVATE_ROOT_PATH + "/status";

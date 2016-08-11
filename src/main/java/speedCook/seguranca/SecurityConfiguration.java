@@ -79,6 +79,12 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
 
 		.antMatchers(HttpMethod.GET, ServicePath.PEDIDO_EMPRESA_PATH).permitAll()
 
+		.antMatchers(HttpMethod.GET, ServicePath.PEDIDO_IDPEDIDO_PATH).permitAll()
+		.antMatchers(HttpMethod.POST, ServicePath.PEDIDO_IDPEDIDO_PATH).hasAnyAuthority(AUTH_ADMIN, AUTH_USUARIO, AUTH_EMPRESA)
+		.antMatchers(HttpMethod.PUT, ServicePath.PEDIDO_IDPEDIDO_PATH).hasAnyAuthority(AUTH_ADMIN, AUTH_USUARIO, AUTH_EMPRESA)
+		.antMatchers(HttpMethod.DELETE, ServicePath.PEDIDO_IDPEDIDO_PATH).hasAnyAuthority(AUTH_ADMIN, AUTH_USUARIO, AUTH_EMPRESA)
+
+
 		// itensPedido
 		.antMatchers(HttpMethod.GET, ServicePath.ITENSPEDIDO_PATH).hasAnyAuthority(AUTH_USUARIO, AUTH_EMPRESA, AUTH_ADMIN)
 		.antMatchers(HttpMethod.POST, ServicePath.ITENSPEDIDO_PATH).hasAnyAuthority(AUTH_USUARIO, AUTH_EMPRESA, AUTH_ADMIN)

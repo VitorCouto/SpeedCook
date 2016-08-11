@@ -42,7 +42,7 @@ public class PessoaController extends GenericService<PessoaEntity, Long>{
 	}
 
 	@Override
-	public void update(PessoaEntity entityObject) {
+	public void update(@RequestBody PessoaEntity entityObject) {
 		entityObject.setPassword(this.passwordEncoder.encode(entityObject.getPassword()));
 
 		super.update(entityObject);

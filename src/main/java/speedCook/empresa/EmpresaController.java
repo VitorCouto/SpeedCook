@@ -37,7 +37,7 @@ public class EmpresaController extends GenericService<EmpresaEntity, Long> {
 	}
 
 	@Override
-	public void update(EmpresaEntity entityObject) {
+	public void update(@RequestBody EmpresaEntity entityObject) {
 		entityObject.setPassword(this.passwordEncoder.encode(entityObject.getPassword()));
 
 		super.update(entityObject);

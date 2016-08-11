@@ -1,7 +1,5 @@
 package speedCook.produto;
 
-import java.sql.Blob;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +27,7 @@ public class ProdutoEntity extends BaseEntity<Long> {
 	private String descricao;
 
 	@Column(nullable = false)
-	private Blob foto;
+	private String foto;
 
 	@Column(name = "codempresa")
 	private Long codEmpresa;
@@ -38,7 +36,7 @@ public class ProdutoEntity extends BaseEntity<Long> {
 		super();
 	}
 
-	public ProdutoEntity(String nomeproduto, Integer quantidade, Double valor, String descricao, Blob foto,
+	public ProdutoEntity(String nomeproduto, Integer quantidade, Double valor, String descricao, String foto,
 			Long codEmpresa) {
 		super();
 		this.nomeproduto = nomeproduto;
@@ -81,11 +79,11 @@ public class ProdutoEntity extends BaseEntity<Long> {
 		this.descricao = descricao;
 	}
 
-	public Blob getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(Blob foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 

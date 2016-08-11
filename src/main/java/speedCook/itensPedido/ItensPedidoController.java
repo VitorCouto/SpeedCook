@@ -1,5 +1,7 @@
 package speedCook.itensPedido;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +19,8 @@ public class ItensPedidoController extends GenericService<ItensPedidoEntity, Ite
 	private ItensPedidoRepository itensPedidoRepository;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/pedido")
-	public ItensPedidoEntity findByPedido (@RequestParam("id") ItensPedidoKeyEntity id){
-		return this.itensPedidoRepository.findOne(id);
+	public List<ItensPedidoEntity> findByPedido (@RequestParam("id") Long id){
+		return this.itensPedidoRepository.findByIdPedidoId(id);
 	}
 
 }
